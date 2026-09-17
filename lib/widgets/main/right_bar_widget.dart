@@ -59,6 +59,10 @@ import 'package:kpix/widgets/overlays/overlay_add_new_layer_menu.dart';
 import 'package:kpix/widgets/overlays/overlay_anchor.dart';
 import 'package:kpix/widgets/overlays/overlay_entries.dart';
 
+//adding imports for swap
+import 'package:kpix/widgets/tools/shader_widget.dart'; 
+import 'package:kpix/widgets/palette/palette_widget.dart';
+
 class RightBarWidget extends StatefulWidget
 {
   const RightBarWidget({
@@ -195,6 +199,10 @@ class _RightBarWidgetState extends State<RightBarWidget>
                         return Column(
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: <Widget>[
+                          Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: <Widget>[
                             Padding(
                               padding: const EdgeInsets.only(top: LayerWidgetOptions.outerPadding, left: LayerWidgetOptions.outerPadding, right: LayerWidgetOptions.outerPadding),
                               child: OverlayAnchor(
@@ -265,6 +273,29 @@ class _RightBarWidgetState extends State<RightBarWidget>
                                 ],
                               ),                    ),
                             ),
+                            SizedBox(//
+                              height: 500,
+                              child: ColoredBox(//
+                                color: Theme.of(context).primaryColor,
+                                child: Column(
+                                children: <Widget>[
+                                  ExcludeFocus(
+                                  child: ShaderWidget(
+                                  titleStyle: Theme.of(context).textTheme.titleLarge,
+                                  labelStyle: Theme.of(context).textTheme.bodySmall,
+                                  ),
+                                  ),// testing swap
+
+                                  Expanded(
+                                    child: PaletteWidget(),
+                                  ),
+                                ],
+                                ),
+                              ),
+                            ),
+                          ], //
+                          ), // Added sections
+                          ), //
                           ],
                         );
                       }

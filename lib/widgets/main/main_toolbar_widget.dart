@@ -37,11 +37,8 @@ import 'package:kpix/layer_states/layer_state.dart';
 import 'package:kpix/layer_states/rasterable_layer_state.dart';
 import 'package:kpix/layer_states/reference_layer/reference_layer_state.dart';
 import 'package:kpix/models/document_state.dart';
-import 'package:kpix/models/project_session.dart';
-import 'package:kpix/widgets/palette/palette_widget.dart';
 import 'package:kpix/widgets/tools/grid_layer_options_widget.dart';
 import 'package:kpix/widgets/tools/reference_layer_options_widget.dart';
-import 'package:kpix/widgets/tools/shader_widget.dart';
 import 'package:kpix/widgets/tools/tool_settings_widget.dart';
 import 'package:kpix/widgets/tools/tools_widget.dart';
 
@@ -66,24 +63,9 @@ class MainToolbarWidget extends StatelessWidget
     return Material(
       color: Theme.of(context).primaryColor,
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.end,
         children: <Widget>[
-          ExcludeFocus(
-            child: ShaderWidget(
-              titleStyle: Theme.of(context).textTheme.titleLarge,
-              labelStyle: Theme.of(context).textTheme.bodySmall,
-            ),
-          ),
-          ExcludeFocus(
-            child: ValueListenableBuilder<bool>(
-              valueListenable: GetIt.I.get<ProjectSession>().hasProjectNotifier,
-              builder: (final BuildContext context, final bool hasProject, final Widget? child)
-              {
-                return hasProject? const PaletteWidget() : Expanded(child: Container(color: Theme.of(context).primaryColorDark));
-              },
-            ),
-          ),
-          ListenableBuilder(
+           ListenableBuilder(
             listenable: GetIt.I.get<DocumentState>().timeline.layerChangeNotifier,
             builder: (final BuildContext context, final Widget? child) {
               final LayerState? currentLayer = GetIt.I.get<DocumentState>().timeline.getCurrentLayer();

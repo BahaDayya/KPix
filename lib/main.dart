@@ -74,7 +74,8 @@ import 'package:version/version.dart';
 /// Default size of the desktop application.
 const Size defaultDesktopSize = Size(1600, 900);
 /// Minimum screen resolution size a device needs to have.
-const Size minimumApplicationSize = Size(1200, 600);
+/// Baha: I've lowered the width requirement by 200 pixels for personal use
+const Size minimumApplicationSize = Size(1000, 600);
 
 /// Command line arguments.
 late List<String> cmdLineArgs; //--dart-entrypoint-args <args>
