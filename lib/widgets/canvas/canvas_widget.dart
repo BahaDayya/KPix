@@ -1100,6 +1100,7 @@ class _CanvasWidgetState extends State<CanvasWidget> with TickerProviderStateMix
             onPointerDown: (final PointerDownEvent pde) {_buttonDown(details: pde);},
             onPointerMove: (final PointerEvent pe) {_updateLocation(details: pe);},
             onPointerUp: (final PointerEvent pe) {_buttonUp(details: pe);},
+            onPointerCancel: (final PointerCancelEvent pce) { _buttonUp(details: pce);},
             onPointerHover: (final PointerHoverEvent phe) {_hover(details: phe);},
             onPointerSignal: (final PointerSignalEvent pse) {_scroll(ev: pse);},
             onPointerPanZoomEnd: (final PointerPanZoomEndEvent event) {_panZoomEnd(event: event);},
